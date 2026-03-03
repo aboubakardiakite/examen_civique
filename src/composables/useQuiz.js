@@ -9,6 +9,9 @@ export function useQuiz(examTypeId = null, categoryId = null) {
     const showFeedback = ref(false)
     const selectedAnswer = ref(null)
     const isFinished = ref(false)
+    const timeRemaining = ref(45 * 60) // 45 minutes by default
+    const timeSpent = ref(0)
+    let timerInterval = null
     const testHistory = useLocalStorage('exam-civique-history', [])
 
     const examType = computed(() => examTypeId ? getExamTypeById(examTypeId) : null)
@@ -45,6 +48,18 @@ export function useQuiz(examTypeId = null, categoryId = null) {
         showFeedback.value = false
         selectedAnswer.value = null
         isFinished.value = false
+
+        // Reset and start timer
+        timeRemaining.value = 45 * 60
+        timeSpent.value = 0
+        if (timerInterval) clearInterval(timerInterval)
+        timerInterval = setInterval(() => {
+            if (timeRemaining.value > 0) {
+                timeRemaining.value--
+            } else {
+                finishQuiz()
+            }
+        }, 1000)
     }
 
     function submitAnswer(optionIndex) {
@@ -72,6 +87,8 @@ export function useQuiz(examTypeId = null, categoryId = null) {
     }
 
     function finishQuiz() {
+        if (timerInterval) clearInterval(timerInterval)
+        timeSpent.value = (45 * 60) - timeRemaining.value
         isFinished.value = true
 
         // Determine dominant category
@@ -93,6 +110,7 @@ export function useQuiz(examTypeId = null, categoryId = null) {
             examTypeName: examType.value?.name || 'Libre',
             categoryId: categoryId,
             dominantCategory: dominantCategory?.name || 'Mixte',
+            timeSpent: timeSpent.value,
             answers: answers.value
         }
 
@@ -114,6 +132,8 @@ export function useQuiz(examTypeId = null, categoryId = null) {
         percentage,
         passThreshold,
         examType,
+        timeRemaining,
+        timeSpent,
         startQuiz,
         submitAnswer,
         nextQuestion

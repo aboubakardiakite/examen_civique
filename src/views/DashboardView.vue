@@ -154,7 +154,12 @@
                   {{ test.categoryId ? getCategoryById(test.categoryId)?.name : 'Examen complet' }}
                 </p>
               </div>
-              <p class="text-xs text-gray-400 mt-1">{{ formatDate(test.date) }} · {{ test.dominantCategory }}</p>
+              <p class="text-xs text-gray-400 mt-1">
+                {{ formatDate(test.date) }} · {{ test.dominantCategory }}
+                <span v-if="test.timeSpent">
+                  · {{ test.percentage >= passThreshold ? 'Réussi en' : 'Terminé en' }} {{ formatTimeSpent(test.timeSpent) }}
+                </span>
+              </p>
             </div>
 
             <!-- Progress mini bar -->
@@ -260,6 +265,14 @@ function formatDate(dateStr) {
     hour: '2-digit',
     minute: '2-digit'
   })
+}
+
+function formatTimeSpent(seconds) {
+  if (!seconds) return ''
+  const m = Math.floor(seconds / 60)
+  const s = seconds % 60
+  if (m === 0) return `${s}s`
+  return `${m} min ${s > 0 ? s + 's' : ''}`
 }
 
 function confirmClear() {

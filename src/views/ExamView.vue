@@ -61,9 +61,19 @@
               Question {{ currentIndex + 1 }} / {{ totalQuestions }}
             </span>
           </div>
-          <span class="text-sm font-bold text-republic-blue-700">
-            Score : {{ score }} / {{ currentIndex + (showFeedback ? 1 : 0) }}
-          </span>
+          <div class="flex items-center gap-4">
+            <span class="text-sm font-bold text-republic-blue-700">
+              Score : {{ score }} / {{ currentIndex + (showFeedback ? 1 : 0) }}
+            </span>
+            <!-- Timer Display -->
+            <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg border font-mono font-bold transition-colors duration-300"
+                 :class="timerConfig.class">
+              <svg class="w-4 h-4" :class="timerConfig.iconClass" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              {{ formattedTimer }}
+            </div>
+          </div>
         </div>
 
         <!-- Progress bar -->
@@ -155,6 +165,7 @@
         {{ resultMessage }}
       </h2>
       <p class="text-gray-500 mb-2">{{ percentage }}% de bonnes réponses</p>
+      <p class="text-gray-500 mb-2 font-medium">Temps écoulé : {{ formattedTimeSpent }}</p>
       <p class="text-sm text-gray-400 mb-8">
         Seuil de réussite : {{ passThreshold }}/{{ totalQuestions }} (80%)
         <span v-if="examTypeInfo" class="ml-2 font-semibold">· {{ examTypeInfo.name }}</span>
@@ -247,10 +258,45 @@ const {
   hasPassed,
   percentage,
   passThreshold,
+  examType,
+  timeRemaining,
+  timeSpent,
   startQuiz,
   submitAnswer,
   nextQuestion
 } = useQuiz(examTypeId.value, categoryId.value)
+
+const formattedTimer = computed(() => {
+  const m = Math.floor(timeRemaining.value / 60).toString().padStart(2, '0')
+  const s = (timeRemaining.value % 60).toString().padStart(2, '0')
+  return `${m}:${s}`
+})
+
+const timerConfig = computed(() => {
+  if (timeRemaining.value <= 5 * 60) {
+    return {
+      class: 'bg-red-50 border-red-200 text-red-600 animate-pulse',
+      iconClass: 'text-red-500'
+    }
+  }
+  if (timeRemaining.value <= 10 * 60) {
+    return {
+      class: 'bg-orange-50 border-orange-200 text-orange-600',
+      iconClass: 'text-orange-500'
+    }
+  }
+  return {
+    class: 'bg-republic-blue-50 border-republic-blue-200 text-republic-blue-800',
+    iconClass: 'text-republic-blue-500'
+  }
+})
+
+const formattedTimeSpent = computed(() => {
+  const m = Math.floor(timeSpent.value / 60)
+  const s = timeSpent.value % 60
+  if (m === 0) return `${s}s`
+  return `${m} min ${s}s`
+})
 
 const started = ref(false)
 
