@@ -1,6 +1,6 @@
 // Questions data converted from CSV
 // Categories: Principes et valeurs, Système politique, Droits et devoirs, Histoire et Géo, Vie en société
-// Levels: csp (CSP1), cr (CSP2), nat (future)
+// Levels: csp (CSP1 + CSP2), cr (CR.csv), nat (NAT.csv)
 
 export const examTypes = [
     {
@@ -172,68 +172,162 @@ export const questions = [
     { id: 80, categoryId: 'societe', level: 'csp', type: 'connaissance', question: "À quoi sert la carte Vitale ?", options: ["Payer le train", "Remboursement des soins", "Voter"], correctAnswer: 1 },
     { id: 81, categoryId: 'societe', level: 'csp', type: 'connaissance', question: "Jusqu'à quel âge l'école est obligatoire ?", options: ["14 ans", "16 ans", "18 ans"], correctAnswer: 1 },
 
-    // ========== CSP2 — Nouvelles questions ==========
+    // ========== CSP2 — Nouvelles questions (niveau CSP) ==========
 
     // Principes et valeurs (CSP2)
-    { id: 82, categoryId: 'principes', level: 'cr', type: 'connaissance', question: "Lequel de ces symboles représente officiellement la République française ?", options: ["Le drapeau et Marianne", "Le chêne", "La couronne"], correctAnswer: 0 },
-    { id: 83, categoryId: 'principes', level: 'cr', type: 'connaissance', question: "Quelles sont les couleurs du drapeau français ?", options: ["Bleu, Blanc, Rouge", "Rouge, Blanc, Vert", "Bleu, Jaune, Rouge"], correctAnswer: 0 },
-    { id: 84, categoryId: 'principes', level: 'cr', type: 'connaissance', question: "Quelle proposition est correcte concernant la liberté d'expression ?", options: ["Elle est absolue", "Elle s'exerce dans le respect de la loi", "Elle n'existe pas"], correctAnswer: 1 },
-    { id: 85, categoryId: 'principes', level: 'cr', type: 'connaissance', question: "Quelle est la place de la langue française ?", options: ["Langue officielle de la République", "Langue facultative", "Langue secondaire"], correctAnswer: 0 },
-    { id: 86, categoryId: 'principes', level: 'cr', type: 'connaissance', question: "Que permet le principe de laïcité ?", options: ["Pratiquer sa religion librement", "Interdire les religions", "L'obligation de croire"], correctAnswer: 0 },
-    { id: 87, categoryId: 'principes', level: 'cr', type: 'connaissance', question: "Quel droit est garanti par la laïcité ?", options: ["Liberté de conscience", "Droit de ne pas aller à l'école", "Droit d'insulter"], correctAnswer: 0 },
+    { id: 82, categoryId: 'principes', level: 'csp', type: 'connaissance', question: "Lequel de ces symboles représente officiellement la République française ?", options: ["Le drapeau et Marianne", "Le chêne", "La couronne"], correctAnswer: 0 },
+    { id: 83, categoryId: 'principes', level: 'csp', type: 'connaissance', question: "Quelles sont les couleurs du drapeau français ?", options: ["Bleu, Blanc, Rouge", "Rouge, Blanc, Vert", "Bleu, Jaune, Rouge"], correctAnswer: 0 },
+    { id: 84, categoryId: 'principes', level: 'csp', type: 'connaissance', question: "Quelle proposition est correcte concernant la liberté d'expression ?", options: ["Elle est absolue", "Elle s'exerce dans le respect de la loi", "Elle n'existe pas"], correctAnswer: 1 },
+    { id: 85, categoryId: 'principes', level: 'csp', type: 'connaissance', question: "Quelle est la place de la langue française ?", options: ["Langue officielle de la République", "Langue facultative", "Langue secondaire"], correctAnswer: 0 },
+    { id: 86, categoryId: 'principes', level: 'csp', type: 'connaissance', question: "Que permet le principe de laïcité ?", options: ["Pratiquer sa religion librement", "Interdire les religions", "L'obligation de croire"], correctAnswer: 0 },
+    { id: 87, categoryId: 'principes', level: 'csp', type: 'connaissance', question: "Quel droit est garanti par la laïcité ?", options: ["Liberté de conscience", "Droit de ne pas aller à l'école", "Droit d'insulter"], correctAnswer: 0 },
 
     // Système politique (CSP2)
-    { id: 88, categoryId: 'politique', level: 'cr', type: 'connaissance', question: "Quel est le rôle de l'autorité judiciaire ?", options: ["Voter les lois", "Protéger les libertés et appliquer la loi", "Diriger la police"], correctAnswer: 1 },
-    { id: 89, categoryId: 'politique', level: 'cr', type: 'connaissance', question: "Que se passe-t-il si un ministre ne respecte pas la loi ?", options: ["Rien", "Il peut être poursuivi en justice", "Il est nommé Président"], correctAnswer: 1 },
-    { id: 90, categoryId: 'politique', level: 'cr', type: 'connaissance', question: "Quand sont élus les sénateurs ?", options: ["Tous les 6 ans (suffrage indirect)", "Tous les 5 ans", "Chaque année"], correctAnswer: 0 },
-    { id: 91, categoryId: 'politique', level: 'cr', type: 'connaissance', question: "Qui est élu lors des élections présidentielles ?", options: ["Le Premier ministre", "Le Président de la République", "Les députés"], correctAnswer: 1 },
-    { id: 92, categoryId: 'politique', level: 'cr', type: 'connaissance', question: "Qui peut voter aux élections en France ?", options: ["Les citoyens français majeurs", "Tous les résidents", "Seulement les propriétaires"], correctAnswer: 0 },
-    { id: 93, categoryId: 'politique', level: 'cr', type: 'connaissance', question: "Quel est le rôle des députés ?", options: ["Représenter les citoyens et voter la loi", "Rendre la justice", "Commander l'armée"], correctAnswer: 0 },
-    { id: 94, categoryId: 'politique', level: 'cr', type: 'connaissance', question: "Qui sanctionne l'auteur d'un vol ?", options: ["Le Maire", "Le juge (autorité judiciaire)", "Le Préfet"], correctAnswer: 1 },
-    { id: 95, categoryId: 'politique', level: 'cr', type: 'connaissance', question: "Qui réside au palais de l'Élysée ?", options: ["Le Président de la République", "Le Premier ministre", "Le Ministre de l'Intérieur"], correctAnswer: 0 },
-    { id: 96, categoryId: 'politique', level: 'cr', type: 'connaissance', question: "Qui est le préfet ?", options: ["Le représentant de l'État dans le département", "L'élu de la mairie", "Le chef de la police"], correctAnswer: 0 },
-    { id: 97, categoryId: 'politique', level: 'cr', type: 'connaissance', question: "Quel est le rôle du Parlement ?", options: ["Voter la loi et contrôler le Gouvernement", "Nommer le Président", "Diriger les entreprises"], correctAnswer: 0 },
-    { id: 98, categoryId: 'politique', level: 'cr', type: 'connaissance', question: "Quel État n'est pas membre de l'Union européenne ?", options: ["Allemagne", "Suisse", "Italie"], correctAnswer: 1 },
-    { id: 99, categoryId: 'politique', level: 'cr', type: 'connaissance', question: "À quelle fréquence les élections européennes ont-elles lieu ?", options: ["Tous les 5 ans", "Tous les 10 ans", "Tous les 3 ans"], correctAnswer: 0 },
+    { id: 88, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Quel est le rôle de l'autorité judiciaire ?", options: ["Voter les lois", "Protéger les libertés et appliquer la loi", "Diriger la police"], correctAnswer: 1 },
+    { id: 89, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Que se passe-t-il si un ministre ne respecte pas la loi ?", options: ["Rien", "Il peut être poursuivi en justice", "Il est nommé Président"], correctAnswer: 1 },
+    { id: 90, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Quand sont élus les sénateurs ?", options: ["Tous les 6 ans (suffrage indirect)", "Tous les 5 ans", "Chaque année"], correctAnswer: 0 },
+    { id: 91, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Qui est élu lors des élections présidentielles ?", options: ["Le Premier ministre", "Le Président de la République", "Les députés"], correctAnswer: 1 },
+    { id: 92, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Qui peut voter aux élections en France ?", options: ["Les citoyens français majeurs", "Tous les résidents", "Seulement les propriétaires"], correctAnswer: 0 },
+    { id: 93, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Quel est le rôle des députés ?", options: ["Représenter les citoyens et voter la loi", "Rendre la justice", "Commander l'armée"], correctAnswer: 0 },
+    { id: 94, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Qui sanctionne l'auteur d'un vol ?", options: ["Le Maire", "Le juge (autorité judiciaire)", "Le Préfet"], correctAnswer: 1 },
+    { id: 95, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Qui réside au palais de l'Élysée ?", options: ["Le Président de la République", "Le Premier ministre", "Le Ministre de l'Intérieur"], correctAnswer: 0 },
+    { id: 96, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Qui est le préfet ?", options: ["Le représentant de l'État dans le département", "L'élu de la mairie", "Le chef de la police"], correctAnswer: 0 },
+    { id: 97, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Quel est le rôle du Parlement ?", options: ["Voter la loi et contrôler le Gouvernement", "Nommer le Président", "Diriger les entreprises"], correctAnswer: 0 },
+    { id: 98, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Quel État n'est pas membre de l'Union européenne ?", options: ["Allemagne", "Suisse", "Italie"], correctAnswer: 1 },
+    { id: 99, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "À quelle fréquence les élections européennes ont-elles lieu ?", options: ["Tous les 5 ans", "Tous les 10 ans", "Tous les 3 ans"], correctAnswer: 0 },
 
     // Droits et devoirs (CSP2)
-    { id: 100, categoryId: 'droits', level: 'cr', type: 'connaissance', question: "Lequel de ces droits est un droit fondamental ?", options: ["Droit de voter", "Droit de voler", "Droit de ne pas payer"], correctAnswer: 0 },
-    { id: 101, categoryId: 'droits', level: 'cr', type: 'connaissance', question: "Quelle liberté permet de ne pas avoir de religion ?", options: ["La laïcité", "La fraternité", "L'égalité"], correctAnswer: 0 },
-    { id: 102, categoryId: 'droits', level: 'cr', type: 'connaissance', question: "Est-il toujours possible de divorcer ?", options: ["Oui", "Non", "Seulement si l'un est d'accord"], correctAnswer: 0 },
-    { id: 103, categoryId: 'droits', level: 'cr', type: 'connaissance', question: "Pourquoi les libertés peuvent-elles être limitées ?", options: ["Pour l'ordre public et le droit d'autrui", "Pour le plaisir du gouvernement", "Elles ne sont jamais limitées"], correctAnswer: 0 },
-    { id: 104, categoryId: 'droits', level: 'cr', type: 'connaissance', question: "Que risque une personne qui ne respecte pas la loi ?", options: ["Une amende ou une peine de prison", "Rien du tout", "Une simple lettre"], correctAnswer: 0 },
-    { id: 105, categoryId: 'droits', level: 'cr', type: 'connaissance', question: "Qu'est-ce qu'une infraction ?", options: ["Un acte interdit par la loi", "Une bonne action", "Un droit"], correctAnswer: 0 },
-    { id: 106, categoryId: 'droits', level: 'cr', type: 'connaissance', question: "En quoi consiste la traite des êtres humains ?", options: ["L'exploitation d'une personne par la force", "Un échange culturel", "Une aide sociale"], correctAnswer: 0 },
+    { id: 100, categoryId: 'droits', level: 'csp', type: 'connaissance', question: "Lequel de ces droits est un droit fondamental ?", options: ["Droit de voter", "Droit de voler", "Droit de ne pas payer"], correctAnswer: 0 },
+    { id: 101, categoryId: 'droits', level: 'csp', type: 'connaissance', question: "Quelle liberté permet de ne pas avoir de religion ?", options: ["La laïcité", "La fraternité", "L'égalité"], correctAnswer: 0 },
+    { id: 102, categoryId: 'droits', level: 'csp', type: 'connaissance', question: "Est-il toujours possible de divorcer ?", options: ["Oui", "Non", "Seulement si l'un est d'accord"], correctAnswer: 0 },
+    { id: 103, categoryId: 'droits', level: 'csp', type: 'connaissance', question: "Pourquoi les libertés peuvent-elles être limitées ?", options: ["Pour l'ordre public et le droit d'autrui", "Pour le plaisir du gouvernement", "Elles ne sont jamais limitées"], correctAnswer: 0 },
+    { id: 104, categoryId: 'droits', level: 'csp', type: 'connaissance', question: "Que risque une personne qui ne respecte pas la loi ?", options: ["Une amende ou une peine de prison", "Rien du tout", "Une simple lettre"], correctAnswer: 0 },
+    { id: 105, categoryId: 'droits', level: 'csp', type: 'connaissance', question: "Qu'est-ce qu'une infraction ?", options: ["Un acte interdit par la loi", "Une bonne action", "Un droit"], correctAnswer: 0 },
+    { id: 106, categoryId: 'droits', level: 'csp', type: 'connaissance', question: "En quoi consiste la traite des êtres humains ?", options: ["L'exploitation d'une personne par la force", "Un échange culturel", "Une aide sociale"], correctAnswer: 0 },
 
     // Histoire et Géo (CSP2)
-    { id: 107, categoryId: 'histoire', level: 'cr', type: 'connaissance', question: "Qu'est-ce que la Shoah ?", options: ["L'extermination des Juifs par les nazis", "Une fête nationale", "Une bataille célèbre"], correctAnswer: 0 },
-    { id: 108, categoryId: 'histoire', level: 'cr', type: 'connaissance', question: "Quel pays a été colonisé par la France ?", options: ["L'Algérie", "L'Espagne", "La Suède"], correctAnswer: 0 },
-    { id: 109, categoryId: 'histoire', level: 'cr', type: 'connaissance', question: "Qui était le premier Président de la Ve République ?", options: ["Charles de Gaulle", "Valéry Giscard d'Estaing", "Georges Pompidou"], correctAnswer: 0 },
-    { id: 110, categoryId: 'histoire', level: 'cr', type: 'connaissance', question: "Pourquoi l'année 1958 est-elle importante ?", options: ["Création de la Ve République", "Fin de la 1ère guerre", "Découverte de l'Amérique"], correctAnswer: 0 },
-    { id: 111, categoryId: 'histoire', level: 'cr', type: 'connaissance', question: "Quel océan borde la côte ouest française ?", options: ["L'Atlantique", "Le Pacifique", "L'Indien"], correctAnswer: 0 },
-    { id: 112, categoryId: 'histoire', level: 'cr', type: 'connaissance', question: "Quelle ville est située au bord de la Méditerranée ?", options: ["Marseille", "Lille", "Strasbourg"], correctAnswer: 0 },
-    { id: 113, categoryId: 'histoire', level: 'cr', type: 'connaissance', question: "Quelle chaîne de montagnes sépare la France et l'Italie ?", options: ["Les Alpes", "Les Pyrénées", "Le Jura"], correctAnswer: 0 },
-    { id: 114, categoryId: 'histoire', level: 'cr', type: 'connaissance', question: "Qui était Charles Baudelaire ?", options: ["Un poète célèbre", "Un général", "Un roi"], correctAnswer: 0 },
-    { id: 115, categoryId: 'histoire', level: 'cr', type: 'connaissance', question: "Qui était George Sand ?", options: ["Une femme écrivain", "Un explorateur", "Un peintre"], correctAnswer: 0 },
-    { id: 116, categoryId: 'histoire', level: 'cr', type: 'connaissance', question: "Qui était Simone de Beauvoir ?", options: ["Une philosophe et féministe", "Une reine", "Une chanteuse"], correctAnswer: 0 },
-    { id: 117, categoryId: 'histoire', level: 'cr', type: 'connaissance', question: "Qui était Albert Camus ?", options: ["Un écrivain (Prix Nobel)", "Un footballeur", "Un scientifique"], correctAnswer: 0 },
-    { id: 118, categoryId: 'histoire', level: 'cr', type: 'connaissance', question: "Qui était Paul Cézanne ?", options: ["Un peintre", "Un musicien", "Un juge"], correctAnswer: 0 },
-    { id: 119, categoryId: 'histoire', level: 'cr', type: 'connaissance', question: "Qu'est-ce que le Louvre ?", options: ["Un musée célèbre", "Une église", "Une montagne"], correctAnswer: 0 },
+    { id: 107, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Qu'est-ce que la Shoah ?", options: ["L'extermination des Juifs par les nazis", "Une fête nationale", "Une bataille célèbre"], correctAnswer: 0 },
+    { id: 108, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Quel pays a été colonisé par la France ?", options: ["L'Algérie", "L'Espagne", "La Suède"], correctAnswer: 0 },
+    { id: 109, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Qui était le premier Président de la Ve République ?", options: ["Charles de Gaulle", "Valéry Giscard d'Estaing", "Georges Pompidou"], correctAnswer: 0 },
+    { id: 110, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Pourquoi l'année 1958 est-elle importante ?", options: ["Création de la Ve République", "Fin de la 1ère guerre", "Découverte de l'Amérique"], correctAnswer: 0 },
+    { id: 111, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Quel océan borde la côte ouest française ?", options: ["L'Atlantique", "Le Pacifique", "L'Indien"], correctAnswer: 0 },
+    { id: 112, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Quelle ville est située au bord de la Méditerranée ?", options: ["Marseille", "Lille", "Strasbourg"], correctAnswer: 0 },
+    { id: 113, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Quelle chaîne de montagnes sépare la France et l'Italie ?", options: ["Les Alpes", "Les Pyrénées", "Le Jura"], correctAnswer: 0 },
+    { id: 114, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Qui était Charles Baudelaire ?", options: ["Un poète célèbre", "Un général", "Un roi"], correctAnswer: 0 },
+    { id: 115, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Qui était George Sand ?", options: ["Une femme écrivain", "Un explorateur", "Un peintre"], correctAnswer: 0 },
+    { id: 116, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Qui était Simone de Beauvoir ?", options: ["Une philosophe et féministe", "Une reine", "Une chanteuse"], correctAnswer: 0 },
+    { id: 117, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Qui était Albert Camus ?", options: ["Un écrivain (Prix Nobel)", "Un footballeur", "Un scientifique"], correctAnswer: 0 },
+    { id: 118, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Qui était Paul Cézanne ?", options: ["Un peintre", "Un musicien", "Un juge"], correctAnswer: 0 },
+    { id: 119, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Qu'est-ce que le Louvre ?", options: ["Un musée célèbre", "Une église", "Une montagne"], correctAnswer: 0 },
 
     // Vie en société (CSP2)
-    { id: 120, categoryId: 'societe', level: 'cr', type: 'connaissance', question: "Après le permis, que faut-il pour conduire ?", options: ["Une assurance et la carte grise", "Juste le permis", "Rien de plus"], correctAnswer: 0 },
-    { id: 121, categoryId: 'societe', level: 'cr', type: 'connaissance', question: "À quelle condition un mariage est reconnu ?", options: ["S'il est célébré par un officier d'état civil", "S'il est religieux", "S'il y a une grande fête"], correctAnswer: 0 },
-    { id: 122, categoryId: 'societe', level: 'cr', type: 'connaissance', question: "Quand déclarer un enfant à la mairie ?", options: ["Dans les jours suivant la naissance", "Après 1 an", "Au moment de l'école"], correctAnswer: 0 },
-    { id: 123, categoryId: 'societe', level: 'cr', type: 'connaissance', question: "Le travail non déclaré est :", options: ["Interdit et puni par la loi", "Autorisé", "Encouragé"], correctAnswer: 0 },
-    { id: 124, categoryId: 'societe', level: 'cr', type: 'connaissance', question: "Quelle est la démarche pour chercher un emploi ?", options: ["S'inscrire à France Travail", "Appeler la mairie", "Ne rien faire"], correctAnswer: 0 },
-    { id: 125, categoryId: 'societe', level: 'cr', type: 'connaissance', question: "Qui est aidé par France Travail ?", options: ["Les demandeurs d'emploi", "Les enfants", "Les retraités"], correctAnswer: 0 },
-    { id: 126, categoryId: 'societe', level: 'cr', type: 'connaissance', question: "À partir de quel âge un mineur peut-il travailler ?", options: ["16 ans (avec exceptions)", "10 ans", "12 ans"], correctAnswer: 0 },
-    { id: 127, categoryId: 'societe', level: 'cr', type: 'connaissance', question: "En cas de problème de santé non urgent, qui voir ?", options: ["Son médecin traitant", "Les urgences", "La police"], correctAnswer: 0 },
-    { id: 128, categoryId: 'societe', level: 'cr', type: 'connaissance', question: "Quel est le rôle du médecin traitant ?", options: ["Soigner et orienter le patient", "Vendre des médicaments", "Diriger l'hôpital"], correctAnswer: 0 },
-    { id: 129, categoryId: 'societe', level: 'cr', type: 'connaissance', question: "À quoi sert une mutuelle santé ?", options: ["Compléter les remboursements de la Sécurité sociale", "Remplacer la carte Vitale", "Payer le loyer"], correctAnswer: 0 },
-    { id: 130, categoryId: 'societe', level: 'cr', type: 'connaissance', question: "L'autorité parentale prévoit l'obligation :", options: ["De protéger, nourrir et éduquer l'enfant", "De faire travailler l'enfant", "De ne pas scolariser l'enfant"], correctAnswer: 0 },
-    { id: 131, categoryId: 'societe', level: 'cr', type: 'connaissance', question: "Quel diplôme obtient-on à la fin du lycée ?", options: ["Le Baccalauréat", "Le Brevet", "La Licence"], correctAnswer: 0 },
-    { id: 132, categoryId: 'societe', level: 'cr', type: 'connaissance', question: "Dans quel établissement va-t-on après l'élémentaire ?", options: ["Au collège", "À l'université", "À la crèche"], correctAnswer: 0 }, 
+    { id: 120, categoryId: 'societe', level: 'csp', type: 'connaissance', question: "Après le permis, que faut-il pour conduire ?", options: ["Une assurance et la carte grise", "Juste le permis", "Rien de plus"], correctAnswer: 0 },
+    { id: 121, categoryId: 'societe', level: 'csp', type: 'connaissance', question: "À quelle condition un mariage est reconnu ?", options: ["S'il est célébré par un officier d'état civil", "S'il est religieux", "S'il y a une grande fête"], correctAnswer: 0 },
+    { id: 122, categoryId: 'societe', level: 'csp', type: 'connaissance', question: "Quand déclarer un enfant à la mairie ?", options: ["Dans les jours suivant la naissance", "Après 1 an", "Au moment de l'école"], correctAnswer: 0 },
+    { id: 123, categoryId: 'societe', level: 'csp', type: 'connaissance', question: "Le travail non déclaré est :", options: ["Interdit et puni par la loi", "Autorisé", "Encouragé"], correctAnswer: 0 },
+    { id: 124, categoryId: 'societe', level: 'csp', type: 'connaissance', question: "Quelle est la démarche pour chercher un emploi ?", options: ["S'inscrire à France Travail", "Appeler la mairie", "Ne rien faire"], correctAnswer: 0 },
+    { id: 125, categoryId: 'societe', level: 'csp', type: 'connaissance', question: "Qui est aidé par France Travail ?", options: ["Les demandeurs d'emploi", "Les enfants", "Les retraités"], correctAnswer: 0 },
+    { id: 126, categoryId: 'societe', level: 'csp', type: 'connaissance', question: "À partir de quel âge un mineur peut-il travailler ?", options: ["16 ans (avec exceptions)", "10 ans", "12 ans"], correctAnswer: 0 },
+    { id: 127, categoryId: 'societe', level: 'csp', type: 'connaissance', question: "En cas de problème de santé non urgent, qui voir ?", options: ["Son médecin traitant", "Les urgences", "La police"], correctAnswer: 0 },
+    { id: 128, categoryId: 'societe', level: 'csp', type: 'connaissance', question: "Quel est le rôle du médecin traitant ?", options: ["Soigner et orienter le patient", "Vendre des médicaments", "Diriger l'hôpital"], correctAnswer: 0 },
+    { id: 129, categoryId: 'societe', level: 'csp', type: 'connaissance', question: "À quoi sert une mutuelle santé ?", options: ["Compléter les remboursements de la Sécurité sociale", "Remplacer la carte Vitale", "Payer le loyer"], correctAnswer: 0 },
+    { id: 130, categoryId: 'societe', level: 'csp', type: 'connaissance', question: "L'autorité parentale prévoit l'obligation :", options: ["De protéger, nourrir et éduquer l'enfant", "De faire travailler l'enfant", "De ne pas scolariser l'enfant"], correctAnswer: 0 },
+    { id: 131, categoryId: 'societe', level: 'csp', type: 'connaissance', question: "Quel diplôme obtient-on à la fin du lycée ?", options: ["Le Baccalauréat", "Le Brevet", "La Licence"], correctAnswer: 0 },
+    { id: 132, categoryId: 'societe', level: 'csp', type: 'connaissance', question: "Dans quel établissement va-t-on après l'élémentaire ?", options: ["Au collège", "À l'université", "À la crèche"], correctAnswer: 0 },
+
+    // ========== CR — Questions spécifiques Carte de Résident ==========
+
+    // Principes et valeurs (CR)
+    { id: 133, categoryId: 'principes', level: 'cr', type: 'connaissance', question: "Parmi les propositions suivantes, laquelle constitue une participation citoyenne ?", options: ["Voter aux élections", "Faire ses courses", "Regarder la météo"], correctAnswer: 0 },
+    { id: 134, categoryId: 'principes', level: 'cr', type: 'connaissance', question: "Que garantit la liberté d'expression ?", options: ["Le droit de tout dire sans limite", "Le droit d'exprimer ses idées dans le respect de la loi", "L'obligation de se taire"], correctAnswer: 1 },
+    { id: 135, categoryId: 'principes', level: 'cr', type: 'connaissance', question: "À quoi sert un titre de séjour ?", options: ["À voyager gratuitement", "À résider et travailler légalement", "À remplacer le passeport"], correctAnswer: 1 },
+    { id: 136, categoryId: 'principes', level: 'cr', type: 'connaissance', question: "Sur quel site internet peut-on retrouver le symbole de la République ?", options: ["elysee.fr", "google.fr", "amazon.fr"], correctAnswer: 0 },
+    { id: 137, categoryId: 'principes', level: 'cr', type: 'connaissance', question: "Complétez la Marseillaise : \"Aux armes […] ! Formez vos bataillons\"", options: ["citoyens", "soldats", "amis"], correctAnswer: 0 },
+    { id: 138, categoryId: 'principes', level: 'cr', type: 'connaissance', question: "Complétez la Marseillaise : \"Allons enfants de la patrie […]\"", options: ["le jour de gloire est arrivé", "le soleil se lève", "la paix est là"], correctAnswer: 0 },
+    { id: 139, categoryId: 'principes', level: 'cr', type: 'connaissance', question: "En tant que parent, peut-on refuser les cours de sport mixtes pour son enfant ?", options: ["Oui", "Non, l'école est laïque et les programmes obligatoires", "Seulement au collège"], correctAnswer: 1 },
+    { id: 140, categoryId: 'principes', level: 'cr', type: 'connaissance', question: "La répudiation de sa femme est :", options: ["Autorisée", "Interdite en France", "Un choix personnel"], correctAnswer: 1 },
+    { id: 141, categoryId: 'principes', level: 'cr', type: 'connaissance', question: "Les impôts permettent de financer les dépenses publiques. C'est :", options: ["Une contribution obligatoire", "Un don facultatif", "Une épargne personnelle"], correctAnswer: 0 },
+    { id: 142, categoryId: 'principes', level: 'cr', type: 'connaissance', question: "À l'école publique, qui peut porter des signes religieux très visibles ?", options: ["Les enseignants", "Les élèves", "Personne"], correctAnswer: 2 },
+    { id: 143, categoryId: 'principes', level: 'cr', type: 'connaissance', question: "Que peut faire un usager du service public dans une mairie ?", options: ["Voter et faire ses papiers", "Vendre des objets", "Dormir"], correctAnswer: 0 },
+    { id: 144, categoryId: 'principes', level: 'cr', type: 'connaissance', question: "La laïcité impose-t-elle aux agents publics d'être neutres ?", options: ["Oui, strictement", "Non, c'est libre", "Seulement le week-end"], correctAnswer: 0 },
+
+    // Système politique (CR)
+    { id: 145, categoryId: 'politique', level: 'cr', type: 'connaissance', question: "Qu'est-ce que l'État de droit ?", options: ["Le droit du plus fort", "Un système où tout le monde est soumis à la loi", "Un État sans juge"], correctAnswer: 1 },
+    { id: 146, categoryId: 'politique', level: 'cr', type: 'connaissance', question: "La loi est l'expression de :", options: ["La volonté générale", "La volonté du Président", "La volonté des riches"], correctAnswer: 0 },
+    { id: 147, categoryId: 'politique', level: 'cr', type: 'connaissance', question: "Une personne peut-elle voter à la place d'une autre ?", options: ["Oui librement", "Non, sauf procuration officielle", "Seulement pour sa famille"], correctAnswer: 1 },
+    { id: 148, categoryId: 'politique', level: 'cr', type: 'connaissance', question: "Est-ce que le vote est obligatoire en France ?", options: ["Oui", "Non, c'est un droit et un devoir civique", "Seulement pour les fonctionnaires"], correctAnswer: 1 },
+    { id: 149, categoryId: 'politique', level: 'cr', type: 'connaissance', question: "À la fin de son mandat, le Président peut-il décider de rester au pouvoir ?", options: ["Oui", "Non, il doit y avoir des élections", "Seulement en cas de guerre"], correctAnswer: 1 },
+    { id: 150, categoryId: 'politique', level: 'cr', type: 'connaissance', question: "Qu'est-ce que l'Hôtel de Matignon ?", options: ["Le siège de l'Assemblée", "La résidence du Premier ministre", "Un hôpital"], correctAnswer: 1 },
+    { id: 151, categoryId: 'politique', level: 'cr', type: 'connaissance', question: "Quel est le rôle du Défenseur des droits ?", options: ["Défendre les citoyens contre les erreurs de l'administration", "Défendre le Gouvernement", "Défendre les banques"], correctAnswer: 0 },
+    { id: 152, categoryId: 'politique', level: 'cr', type: 'connaissance', question: "Quel traité concerne la construction de l'Union européenne ?", options: ["Le traité de Maastricht", "Le traité de Versailles", "Le traité de Verdun"], correctAnswer: 0 },
+    { id: 153, categoryId: 'politique', level: 'cr', type: 'connaissance', question: "Quel est l'hymne de l'Union européenne ?", options: ["L'Ode à la joie", "La Marseillaise", "L'hymne à l'amour"], correctAnswer: 0 },
+    { id: 154, categoryId: 'politique', level: 'cr', type: 'connaissance', question: "Où est le siège de la Commission européenne ?", options: ["Strasbourg", "Bruxelles", "Luxembourg"], correctAnswer: 1 },
+
+    // Droits et devoirs (CR)
+    { id: 155, categoryId: 'droits', level: 'cr', type: 'connaissance', question: "À quelle liberté la PMA fait-elle référence ?", options: ["Liberté de circulation", "Liberté de fonder une famille", "Liberté de culte"], correctAnswer: 1 },
+    { id: 156, categoryId: 'droits', level: 'cr', type: 'connaissance', question: "Au nom de quoi l'État peut-il restreindre certains droits ?", options: ["L'ordre public", "L'intérêt personnel du Président", "Le hasard"], correctAnswer: 0 },
+    { id: 157, categoryId: 'droits', level: 'cr', type: 'connaissance', question: "Que prévoit la Charte de l'environnement ?", options: ["Le droit de polluer", "Le droit de vivre dans un environnement équilibré", "Rien d'obligatoire"], correctAnswer: 1 },
+    { id: 158, categoryId: 'droits', level: 'cr', type: 'connaissance', question: "Que signifie la dignité humaine ?", options: ["Le respect de la personne en toutes circonstances", "Avoir beaucoup d'argent", "Être célèbre"], correctAnswer: 0 },
+    { id: 159, categoryId: 'droits', level: 'cr', type: 'connaissance', question: "Que signifie le droit de manifester ?", options: ["Le droit d'exprimer son mécontentement collectivement", "Le droit de casser", "Le droit de bloquer sans limite"], correctAnswer: 0 },
+    { id: 160, categoryId: 'droits', level: 'cr', type: 'connaissance', question: "Concernant les réseaux sociaux, quelle proposition est correcte ?", options: ["On peut tout dire sans risque", "La loi s'y applique aussi (haine interdite)", "C'est une zone sans loi"], correctAnswer: 1 },
+    { id: 161, categoryId: 'droits', level: 'cr', type: 'connaissance', question: "Quel exemple illustre une limitation de liberté pour l'intérêt général ?", options: ["Le code de la route", "L'interdiction de lire", "L'obligation de manger"], correctAnswer: 0 },
+
+    // Histoire et Géo (CR)
+    { id: 162, categoryId: 'histoire', level: 'cr', type: 'connaissance', question: "Quel était le surnom de Louis XIV ?", options: ["Le Roi-Soleil", "Le Hardi", "Le Bien-Aimé"], correctAnswer: 0 },
+    { id: 163, categoryId: 'histoire', level: 'cr', type: 'connaissance', question: "De quand date l'appel à la résistance du général de Gaulle ?", options: ["18 juin 1940", "11 novembre 1918", "8 mai 1945"], correctAnswer: 0 },
+    { id: 164, categoryId: 'histoire', level: 'cr', type: 'connaissance', question: "Quelle est la première étape de la construction européenne en 1951 ?", options: ["La CECA", "L'Euro", "L'espace Schengen"], correctAnswer: 0 },
+    { id: 165, categoryId: 'histoire', level: 'cr', type: 'connaissance', question: "Quel régime politique a été mis en place en 1792 ?", options: ["La Ière République", "Le Premier Empire", "La Monarchie"], correctAnswer: 0 },
+    { id: 166, categoryId: 'histoire', level: 'cr', type: 'connaissance', question: "Quelle organisation internationale a été créée en 1945 ?", options: ["L'ONU", "L'Union Européenne", "L'OTAN"], correctAnswer: 0 },
+    { id: 167, categoryId: 'histoire', level: 'cr', type: 'connaissance', question: "Que fête-t-on le 8 mai ?", options: ["La victoire de 1945", "La fin de la 1ère guerre", "La fête du travail"], correctAnswer: 0 },
+    { id: 168, categoryId: 'histoire', level: 'cr', type: 'connaissance', question: "Quelle est la population approximative de la France en 2025 ?", options: ["50 millions", "68 millions", "80 millions"], correctAnswer: 1 },
+    { id: 169, categoryId: 'histoire', level: 'cr', type: 'connaissance', question: "Combien de personnes parlent français dans le monde ?", options: ["100 millions", "Environ 320 millions", "1 milliard"], correctAnswer: 1 },
+    { id: 170, categoryId: 'histoire', level: 'cr', type: 'connaissance', question: "Qui était Marguerite Yourcenar ?", options: ["Une grande écrivaine", "Une reine", "Une chanteuse"], correctAnswer: 0 },
+
+    // Vie en société (CR)
+    { id: 171, categoryId: 'societe', level: 'cr', type: 'connaissance', question: "Quel mariage est reconnu par l'État ?", options: ["Le mariage civil (à la mairie)", "Le mariage religieux", "Le mariage coutumier"], correctAnswer: 0 },
+    { id: 172, categoryId: 'societe', level: 'cr', type: 'connaissance', question: "En cas de divorce, qui exerce l'autorité parentale ?", options: ["Le père uniquement", "La mère uniquement", "Les deux parents (sauf décision du juge)"], correctAnswer: 2 },
+    { id: 173, categoryId: 'societe', level: 'cr', type: 'connaissance', question: "Quelle aide permet d'avoir un avocat gratuitement ?", options: ["L'aide juridictionnelle", "Le RSA", "La prime d'activité"], correctAnswer: 0 },
+    { id: 174, categoryId: 'societe', level: 'cr', type: 'connaissance', question: "À qui est accessible la contraception ?", options: ["À toutes les femmes", "Seulement aux femmes mariées", "Seulement aux majeures"], correctAnswer: 0 },
+    { id: 175, categoryId: 'societe', level: 'cr', type: 'connaissance', question: "Qu'est-ce que le principe de confidentialité en santé ?", options: ["Le secret médical", "L'obligation de tout dire", "Le partage des données sur internet"], correctAnswer: 0 },
+    { id: 176, categoryId: 'societe', level: 'cr', type: 'connaissance', question: "Quelles sont les affaires traitées par les Prud'hommes ?", options: ["Les litiges liés au contrat de travail", "Les vols", "Les divorces"], correctAnswer: 0 },
+    { id: 177, categoryId: 'societe', level: 'cr', type: 'connaissance', question: "Des parents ne respectent pas l'obligation d'instruction. Ils risquent :", options: ["Rien", "Une amende et une peine de prison", "Un simple avertissement"], correctAnswer: 1 },
+    { id: 178, categoryId: 'societe', level: 'cr', type: 'connaissance', question: "Comment s'appelle l'enfant en situation de handicap à l'école ?", options: ["Il est inclus (élève à besoins éducatifs particuliers)", "Il ne peut pas aller à l'école", "Il reste chez lui"], correctAnswer: 0 },
+
+    // ========== NAT — Questions spécifiques Naturalisation ==========
+
+    // Principes et valeurs (NAT)
+    { id: 179, categoryId: 'principes', level: 'nat', type: 'connaissance', question: "En quelle année la France a-t-elle adopté la Déclaration des Droits de l'Homme ?", options: ["1789", "1804", "1945"], correctAnswer: 0 },
+    { id: 180, categoryId: 'principes', level: 'nat', type: 'connaissance', question: "Qu'est-ce que le principe de \"Fraternité\" implique concrètement ?", options: ["L'obligation de voter", "La solidarité nationale (impôts, protection sociale)", "L'obéissance au chef"], correctAnswer: 1 },
+    { id: 181, categoryId: 'principes', level: 'nat', type: 'connaissance', question: "La loi sur la laïcité de 2004 interdit dans les écoles publiques :", options: ["Les discussions religieuses", "Le port de signes religieux ostensibles", "La prière privée"], correctAnswer: 1 },
+    { id: 182, categoryId: 'principes', level: 'nat', type: 'connaissance', question: "Qui a écrit la \"Déclaration des droits de la femme et de la citoyenne\" en 1791 ?", options: ["Olympe de Gouges", "Simone Veil", "Louise Michel"], correctAnswer: 0 },
+
+    // Système politique (NAT)
+    { id: 183, categoryId: 'politique', level: 'nat', type: 'connaissance', question: "Quel est le rôle du Conseil Constitutionnel ?", options: ["Voter le budget", "Vérifier la conformité des lois à la Constitution", "Juger les crimes graves"], correctAnswer: 1 },
+    { id: 184, categoryId: 'politique', level: 'nat', type: 'connaissance', question: "Comment appelle-t-on le texte de loi avant qu'il ne soit voté par le Parlement ?", options: ["Un décret", "Un projet ou une proposition de loi", "Un arrêté"], correctAnswer: 1 },
+    { id: 185, categoryId: 'politique', level: 'nat', type: 'connaissance', question: "Qui peut saisir le Défenseur des Droits ?", options: ["Seulement les citoyens français", "Toute personne s'estimant lésée par une administration", "Seulement le Président"], correctAnswer: 1 },
+    { id: 186, categoryId: 'politique', level: 'nat', type: 'connaissance', question: "Quel organe peut renverser le Gouvernement par une motion de censure ?", options: ["Le Sénat", "L'Assemblée nationale", "Le Conseil d'État"], correctAnswer: 1 },
+    { id: 187, categoryId: 'politique', level: 'nat', type: 'connaissance', question: "Qu'est-ce que la \"navette parlementaire\" ?", options: ["Le bus des députés", "Le va-et-vient d'un texte entre l'Assemblée et le Sénat", "Le voyage officiel du Président"], correctAnswer: 1 },
+
+    // Histoire (NAT)
+    { id: 188, categoryId: 'histoire', level: 'nat', type: 'connaissance', question: "Quel roi a instauré l'Édit de Nantes pour mettre fin aux guerres de religion ?", options: ["Louis XIV", "Henri IV", "François Ier"], correctAnswer: 1 },
+    { id: 189, categoryId: 'histoire', level: 'nat', type: 'connaissance', question: "Qui était Jean Moulin ?", options: ["Un ministre de Napoléon", "Le chef du Conseil National de la Résistance", "Un écrivain du Moyen-Âge"], correctAnswer: 1 },
+    { id: 190, categoryId: 'histoire', level: 'nat', type: 'connaissance', question: "Quelle bataille célèbre de 1916 a marqué la Première Guerre mondiale ?", options: ["La bataille de la Marne", "La bataille de Verdun", "La bataille de Waterloo"], correctAnswer: 1 },
+    { id: 191, categoryId: 'histoire', level: 'nat', type: 'connaissance', question: "Qu'appelle-t-on les \"Trente Glorieuses\" ?", options: ["Les 30 victoires de Napoléon", "La période de forte croissance entre 1945 et 1975", "Les 30 premiers jours de la Révolution"], correctAnswer: 1 },
+    { id: 192, categoryId: 'histoire', level: 'nat', type: 'connaissance', question: "Qui a instauré le Code Civil en 1804 ?", options: ["Louis XVI", "Napoléon Bonaparte", "Charles de Gaulle"], correctAnswer: 1 },
+
+    // Culture (NAT → histoire)
+    { id: 193, categoryId: 'histoire', level: 'nat', type: 'connaissance', question: "Qui a écrit \"Les Misérables\" ?", options: ["Gustave Flaubert", "Victor Hugo", "Émile Zola"], correctAnswer: 1 },
+    { id: 194, categoryId: 'histoire', level: 'nat', type: 'connaissance', question: "Quel courant artistique a été fondé par Claude Monet ?", options: ["Le surréalisme", "L'impressionnisme", "Le cubisme"], correctAnswer: 1 },
+    { id: 195, categoryId: 'histoire', level: 'nat', type: 'connaissance', question: "Qui a découvert le vaccin contre la rage ?", options: ["Marie Curie", "Louis Pasteur", "Antoine Lavoisier"], correctAnswer: 1 },
+    { id: 196, categoryId: 'histoire', level: 'nat', type: 'connaissance', question: "Quelle philosophe a écrit \"Le Deuxième Sexe\" ?", options: ["Françoise Sagan", "Simone de Beauvoir", "George Sand"], correctAnswer: 1 },
+
+    // Géographie (NAT → histoire)
+    { id: 197, categoryId: 'histoire', level: 'nat', type: 'connaissance', question: "Quel est le point culminant de la France et de l'Europe occidentale ?", options: ["Le Puy de Sancy", "Le Mont Blanc", "Le Mont Ventoux"], correctAnswer: 1 },
+    { id: 198, categoryId: 'histoire', level: 'nat', type: 'connaissance', question: "Citez un territoire français situé dans le Pacifique :", options: ["La Réunion", "La Nouvelle-Calédonie", "La Guadeloupe"], correctAnswer: 1 },
+
+    // Vie en société (NAT)
+    { id: 199, categoryId: 'societe', level: 'nat', type: 'connaissance', question: "Qu'est-ce que la \"jurisprudence\" ?", options: ["Une nouvelle loi", "L'ensemble des décisions de justice qui servent de référence", "Un diplôme de droit"], correctAnswer: 1 },
+    { id: 200, categoryId: 'societe', level: 'nat', type: 'connaissance', question: "En France, quel est l'organisme qui gère les retraites de base ?", options: ["La CAF", "L'Assurance Retraite (CNAV)", "Le Trésor Public"], correctAnswer: 1 },
 ]
 
 export function getQuestionsByCategory(categoryId, examTypeId = null) {
