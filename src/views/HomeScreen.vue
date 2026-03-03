@@ -69,7 +69,7 @@
           </p>
           <p class="text-sm text-gray-500 mt-2">{{ exam.fullName }}</p>
           <p class="text-xs text-gray-400 mt-1">{{ exam.description }}</p>
-          <div class="mt-3 flex items-center gap-2">
+          <div class="mt-3 flex items-center justify-between">
             <span class="text-xs font-medium px-2 py-0.5 rounded-full"
               :class="{
                 'bg-republic-blue-100 text-republic-blue-700': exam.color === 'republic-blue',
@@ -78,6 +78,9 @@
               }"
             >
               {{ getExamQuestionCount(exam.id) }} questions dispo.
+            </span>
+            <span class="text-xs font-bold text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">
+              🏆 {{ getHighScoreForExam(exam.id) }}
             </span>
           </div>
         </button>
@@ -135,12 +138,18 @@
 
     <!-- Category Progress -->
     <section class="max-w-5xl mx-auto px-4 mt-12">
-      <h2 class="text-2xl font-bold text-republic-blue-800 mb-6">
-        Progression par catégorie
-      </h2>
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-bold text-republic-blue-800">
+          Progression par catégorie
+        </h2>
+        <!-- Indicateur de filtre -->
+        <span class="text-sm font-medium bg-white text-republic-blue-600 px-3 py-1 rounded-full border border-republic-blue-200 shadow-sm">
+          Filtre actuel : {{ examTypes.find(e => e.id === selectedExamType)?.name }}
+        </span>
+      </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div
-          v-for="cat in categoryStats"
+          v-for="cat in filteredCategoryStats"
           :key="cat.id"
           class="glass-card rounded-2xl p-5 hover:shadow-xl transition-all duration-300"
         >
@@ -205,14 +214,18 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { questions, examTypes, getQuestionCountForExamType } from '../data/questions.js'
 import { useStats } from '../composables/useStats.js'
 import CategoryIcon from '../components/CategoryIcon.vue'
 
-const { totalTests, averageScore, bestScore, categoryStats } = useStats()
+const { totalTests, averageScore, bestScore, getHighScoreForExam, getCategoryStats } = useStats()
 
 const selectedExamType = ref('csp')
+
+const filteredCategoryStats = computed(() => {
+  return getCategoryStats(selectedExamType.value)
+})
 
 function getExamQuestionCount(examTypeId) {
   return getQuestionCountForExamType(examTypeId)

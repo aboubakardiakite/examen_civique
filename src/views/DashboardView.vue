@@ -33,9 +33,31 @@
     </div>
 
     <div v-else>
+      <!-- Filter Tabs -->
+      <div class="flex flex-wrap justify-center gap-2 mb-8">
+        <button
+          @click="selectedChartFilter = null"
+          class="px-5 py-2 rounded-full font-bold text-sm transition-all duration-300"
+          :class="selectedChartFilter === null ? 'bg-republic-blue-800 text-white shadow-lg' : 'bg-white text-republic-blue-600 border border-republic-blue-200 hover:bg-republic-blue-50'"
+        >
+          Tous les tests
+        </button>
+        <button
+          v-for="exam in examTypes"
+          :key="exam.id"
+          @click="selectedChartFilter = exam.id"
+          class="px-5 py-2 rounded-full font-bold text-sm transition-all duration-300 flex items-center gap-2"
+          :class="selectedChartFilter === exam.id ? 'bg-republic-blue-800 text-white shadow-lg' : 'bg-white border text-gray-600 hover:bg-gray-50 border-gray-200'"
+        >
+          {{ exam.icon }} {{ exam.name }}
+        </button>
+      </div>
+
       <!-- Score Chart (SVG) -->
       <div class="glass-card rounded-2xl p-6 mb-8">
-        <h2 class="text-lg font-bold text-republic-blue-800 mb-4">Évolution des scores</h2>
+        <h2 class="text-lg font-bold text-republic-blue-800 mb-4">
+          Évolution des scores <span v-if="selectedChartFilter">- Examen {{ examTypes.find(e => e.id === selectedChartFilter)?.name }}</span>
+        </h2>
         <div class="relative overflow-hidden" style="height: 220px;">
           <svg :viewBox="`0 0 ${chartWidth} 220`" class="w-full h-full" preserveAspectRatio="none">
             <!-- Grid lines -->
@@ -58,14 +80,14 @@
               </linearGradient>
             </defs>
             <path
-              v-if="lastScores.length > 1"
+              v-if="chartPoints.length > 1"
               :d="areaPath"
               fill="url(#scoreGradient)"
             />
 
             <!-- Line -->
             <path
-              v-if="lastScores.length > 1"
+              v-if="chartPoints.length > 1"
               :d="linePath"
               fill="none"
               stroke="#1B2A4A"
@@ -112,7 +134,7 @@
         </div>
         <div class="divide-y divide-gray-100">
           <div
-            v-for="test in testHistory"
+            v-for="test in filteredHistory"
             :key="test.id"
             class="px-6 py-4 flex items-center gap-4 hover:bg-gray-50/50 transition-colors"
           >
@@ -124,10 +146,15 @@
             </div>
 
             <div class="flex-1 min-w-0">
-              <p class="font-medium text-republic-blue-800 truncate">
-                {{ test.categoryId ? getCategoryById(test.categoryId)?.name : 'Examen complet' }}
-              </p>
-              <p class="text-xs text-gray-400">{{ formatDate(test.date) }} · {{ test.dominantCategory }}</p>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-republic-blue-100 text-republic-blue-800 shrink-0">
+                  {{ test.examTypeName }}
+                </span>
+                <p class="font-medium text-republic-blue-800 truncate">
+                  {{ test.categoryId ? getCategoryById(test.categoryId)?.name : 'Examen complet' }}
+                </p>
+              </div>
+              <p class="text-xs text-gray-400 mt-1">{{ formatDate(test.date) }} · {{ test.dominantCategory }}</p>
             </div>
 
             <!-- Progress mini bar -->
@@ -180,19 +207,25 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useStats } from '../composables/useStats.js'
-import { getCategoryById } from '../data/questions.js'
+import { getCategoryById, examTypes } from '../data/questions.js'
 
-const { testHistory, totalTests, lastScores, clearHistory } = useStats()
+const { testHistory, totalTests, getScoreEvolution, clearHistory } = useStats()
 
 const showClearModal = ref(false)
+const selectedChartFilter = ref(null)
 const chartWidth = 600
+
+const filteredHistory = computed(() => {
+  if (!selectedChartFilter.value) return testHistory.value
+  return testHistory.value.filter(t => t.examTypeId === selectedChartFilter.value)
+})
 
 function yScale(percent) {
   return 200 - (percent / 100 * 170) + 10
 }
 
 const chartPoints = computed(() => {
-  const scores = lastScores.value
+  const scores = getScoreEvolution(selectedChartFilter.value)
   if (scores.length === 0) return []
 
   const step = scores.length > 1 ? (chartWidth - 60) / (scores.length - 1) : 0

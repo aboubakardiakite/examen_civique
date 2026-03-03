@@ -209,8 +209,9 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import confetti from 'canvas-confetti'
 import { useQuiz } from '../composables/useQuiz.js'
 import { getCategoryById, getExamTypeById, categories } from '../data/questions.js'
 import QuestionCard from '../components/QuestionCard.vue'
@@ -254,6 +255,37 @@ const {
 const started = ref(false)
 
 const circumference = 2 * Math.PI * 54
+
+// Confetti effect
+watch(isFinished, (finished) => {
+  if (finished && hasPassed.value) {
+    // Fire confetti from both sides
+    const duration = 3000
+    const end = Date.now() + duration
+
+    const frame = () => {
+      confetti({
+        particleCount: 5,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 },
+        colors: ['#1B2A4A', '#F5F0EB', '#C53030', '#C9A84C']
+      })
+      confetti({
+        particleCount: 5,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 },
+        colors: ['#1B2A4A', '#F5F0EB', '#C53030', '#C9A84C']
+      })
+
+      if (Date.now() < end) {
+        requestAnimationFrame(frame)
+      }
+    }
+    frame()
+  }
+})
 
 const scoreColor = computed(() => {
   if (hasPassed.value) return '#22c55e'
