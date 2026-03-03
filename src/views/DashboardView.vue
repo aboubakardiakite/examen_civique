@@ -208,6 +208,7 @@
 import { ref, computed } from 'vue'
 import { useStats } from '../composables/useStats.js'
 import { getCategoryById, examTypes } from '../data/questions.js'
+import CategoryIcon from '../components/CategoryIcon.vue'
 
 const { testHistory, totalTests, getScoreEvolution, clearHistory } = useStats()
 
