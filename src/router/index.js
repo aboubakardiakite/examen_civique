@@ -3,6 +3,9 @@ import HomeScreen from '../views/HomeScreen.vue'
 import ExamView from '../views/ExamView.vue'
 import DashboardView from '../views/DashboardView.vue'
 import CategoryView from '../views/CategoryView.vue'
+import GlossaireView from '../views/GlossaireView.vue'
+import WeakPointsView from '../views/WeakPointsView.vue'
+import EntretienView from '../views/EntretienView.vue'
 
 const routes = [
     {
@@ -29,6 +32,21 @@ const routes = [
         path: '/categories',
         name: 'categories',
         component: CategoryView
+    },
+    {
+        path: '/glossaire',
+        name: 'glossaire',
+        component: GlossaireView
+    },
+    {
+        path: '/revision',
+        name: 'revision',
+        component: WeakPointsView
+    },
+    {
+        path: '/entretien',
+        name: 'entretien',
+        component: EntretienView
     }
 ]
 

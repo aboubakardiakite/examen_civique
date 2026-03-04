@@ -1,14 +1,15 @@
 import { ref, computed } from 'vue'
-import { getRandomQuestions, getCategoryById, getExamTypeById, categories } from '../data/questions.js'
+import { getRandomQuestions, getCategoryById, getExamTypeById, getQuestionsByIds, categories } from '../data/questions.js'
 import { useLocalStorage } from './useLocalStorage.js'
 
-export function useQuiz(examTypeId = null, categoryId = null) {
+export function useQuiz(examTypeId = null, categoryId = null, preselectedQuestionIds = null) {
     const quizQuestions = ref([])
     const currentIndex = ref(0)
     const answers = ref([])
     const showFeedback = ref(false)
     const selectedAnswer = ref(null)
     const isFinished = ref(false)
+    const isWeakPointsMode = ref(!!preselectedQuestionIds)
     const timeRemaining = ref(45 * 60) // 45 minutes by default
     const timeSpent = ref(0)
     let timerInterval = null
@@ -41,8 +42,14 @@ export function useQuiz(examTypeId = null, categoryId = null) {
     })
 
     function startQuiz() {
-        const count = categoryId ? 999 : questionCount.value
-        quizQuestions.value = getRandomQuestions(count, categoryId, examTypeId)
+        // Weak-points mode: use pre-selected questions
+        if (preselectedQuestionIds && preselectedQuestionIds.length > 0) {
+            quizQuestions.value = getQuestionsByIds(preselectedQuestionIds)
+                .sort(() => Math.random() - 0.5)
+        } else {
+            const count = categoryId ? 999 : (examTypeId ? 40 : 40)
+            quizQuestions.value = getRandomQuestions(count, categoryId, examTypeId)
+        }
         currentIndex.value = 0
         answers.value = []
         showFeedback.value = false
@@ -128,6 +135,7 @@ export function useQuiz(examTypeId = null, categoryId = null) {
         showFeedback,
         selectedAnswer,
         isFinished,
+        isWeakPointsMode,
         hasPassed,
         percentage,
         passThreshold,

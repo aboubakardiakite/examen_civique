@@ -1,6 +1,6 @@
 // Questions data converted from CSV
 // Categories: Principes et valeurs, Système politique, Droits et devoirs, Histoire et Géo, Vie en société
-// Levels: csp (CSP1 + CSP2), cr (CR.csv), nat (NAT.csv)
+// Levels: csp (CSP1 + CSP2), cr (CR.csv), nat (NAT.csv), sit (Situations du quotidien)
 
 export const examTypes = [
     {
@@ -328,6 +328,28 @@ export const questions = [
     // Vie en société (NAT)
     { id: 199, categoryId: 'societe', level: 'nat', type: 'connaissance', question: "Qu'est-ce que la \"jurisprudence\" ?", options: ["Une nouvelle loi", "L'ensemble des décisions de justice qui servent de référence", "Un diplôme de droit"], correctAnswer: 1 },
     { id: 200, categoryId: 'societe', level: 'nat', type: 'connaissance', question: "En France, quel est l'organisme qui gère les retraites de base ?", options: ["La CAF", "L'Assurance Retraite (CNAV)", "Le Trésor Public"], correctAnswer: 1 },
+
+    // ========== SIT — Questions situationnelles (présentes dans TOUS les examens) ==========
+    { id: 201, categoryId: 'societe', level: 'sit', type: 'situation', question: "Votre enfant est malade et a besoin d'aller chez le médecin. Que faites-vous en premier ?", options: ["Vous allez directement aux urgences", "Vous appelez votre médecin traitant pour un rendez-vous", "Vous attendez que ça passe"], correctAnswer: 1 },
+    { id: 202, categoryId: 'droits', level: 'sit', type: 'situation', question: "Vous êtes victime d'une discrimination à l'embauche. Que pouvez-vous faire ?", options: ["Ne rien faire, c'est normal", "Saisir le Défenseur des droits ou porter plainte", "Accepter la situation"], correctAnswer: 1 },
+    { id: 203, categoryId: 'societe', level: 'sit', type: 'situation', question: "Votre voisin fait des travaux bruyants la nuit. Quelle est la première démarche ?", options: ["Appeler la police immédiatement", "Discuter calmement avec lui, puis contacter le syndic si besoin", "Faire pareil pour lui montrer"], correctAnswer: 1 },
+    { id: 204, categoryId: 'societe', level: 'sit', type: 'situation', question: "Vous perdez votre emploi. Quelle est la bonne démarche ?", options: ["Attendre que le travail vienne à vous", "Vous inscrire à France Travail dans les meilleurs délais", "Travailler au noir"], correctAnswer: 1 },
+    { id: 205, categoryId: 'societe', level: 'sit', type: 'situation', question: "À l'école, votre enfant est victime de harcèlement. Que faites-vous ?", options: ["Lui dire de se battre", "En parler au directeur de l'établissement et si besoin contacter les autorités", "Changer l'enfant d'école sans rien dire"], correctAnswer: 1 },
+    { id: 206, categoryId: 'droits', level: 'sit', type: 'situation', question: "Vous êtes arrêté par la police. Quel est votre droit fondamental ?", options: ["Vous pouvez refuser de vous identifier", "Vous avez le droit de connaître les raisons de votre arrestation et d'avoir un avocat", "Vous devez répondre à toutes les questions immédiatement"], correctAnswer: 1 },
+    { id: 207, categoryId: 'societe', level: 'sit', type: 'situation', question: "Vous recevez un courrier de la préfecture vous demandant de renouveler votre titre de séjour. Que faites-vous ?", options: ["Vous l'ignorez", "Vous prenez rendez-vous en préfecture avant l'expiration de votre titre", "Vous attendez que votre titre expire pour agir"], correctAnswer: 1 },
+    { id: 208, categoryId: 'societe', level: 'sit', type: 'situation', question: "Vous trouvez dans la rue un portefeuille avec de l'argent. Que devez-vous faire ?", options: ["Le garder, c'est votre chance", "Le déposer au commissariat ou à la mairie", "Laisser le portefeuille sur place"], correctAnswer: 1 },
+    { id: 209, categoryId: 'societe', level: 'sit', type: 'situation', question: "Vous êtes témoin d'un accident de la route avec des blessés. Que faites-vous ?", options: ["Vous passez votre chemin pour ne pas vous impliquer", "Vous appelez le 15 (SAMU) ou le 18 (pompiers) et portez assistance si possible", "Vous prenez des photos pour les réseaux sociaux"], correctAnswer: 1 },
+    { id: 210, categoryId: 'droits', level: 'sit', type: 'situation', question: "Votre propriétaire refuse de vous rendre votre caution sans raison valable. Que faites-vous ?", options: ["Accepter la situation", "Envoyer une mise en demeure et saisir la commission de conciliation ou le tribunal", "Endommager l'appartement en représailles"], correctAnswer: 1 },
+    { id: 211, categoryId: 'societe', level: 'sit', type: 'situation', question: "Vous souhaitez faire une demande de logement social. Quelle est la première étape ?", options: ["Contacter directement un propriétaire privé", "Déposer une demande en ligne sur le portail national ou à la mairie", "Attendre que la mairie vous contacte"], correctAnswer: 1 },
+    { id: 212, categoryId: 'droits', level: 'sit', type: 'situation', question: "Votre employeur ne vous a pas payé votre salaire du mois. Que faites-vous ?", options: ["Arrêter de travailler immédiatement sans rien dire", "Envoyer une lettre de mise en demeure et saisir le Conseil de prud'hommes si besoin", "Accepter et attendre"], correctAnswer: 1 },
+    { id: 213, categoryId: 'societe', level: 'sit', type: 'situation', question: "Votre enfant en âge scolaire refuse d'aller à l'école. En tant que parent, quelle est votre obligation ?", options: ["Respecter sa volonté", "L'y obliger, car la scolarisation est obligatoire jusqu'à 16 ans", "Le changer d'école uniquement"], correctAnswer: 1 },
+    { id: 214, categoryId: 'societe', level: 'sit', type: 'situation', question: "Vous souhaitez créer une association. Quelle démarche effectuez-vous ?", options: ["Un dépôt de la déclaration en préfecture (loi 1901)", "Un dépôt au tribunal de commerce", "Une inscription sur les impôts"], correctAnswer: 0 },
+    { id: 215, categoryId: 'droits', level: 'sit', type: 'situation', question: "Vous êtes convoqué au tribunal. Vous n'avez pas les moyens de payer un avocat. Que pouvez-vous faire ?", options: ["Y aller sans avocat et vous défendre seul obligatoirement", "Demander l'aide juridictionnelle (avocat pris en charge par l'État)", "Ignorer la convocation"], correctAnswer: 1 },
+    { id: 216, categoryId: 'societe', level: 'sit', type: 'situation', question: "Vous venez d'avoir un enfant. Dans quel délai devez-vous le déclarer à la mairie ?", options: ["Dans les 5 jours suivant la naissance", "Dans les 6 mois", "Avant l'entrée à l'école"], correctAnswer: 0 },
+    { id: 217, categoryId: 'societe', level: 'sit', type: 'situation', question: "Dans un service public, un agent refuse de vous aider à cause de votre origine. C'est :", options: ["Légal, il peut choisir ses usagers", "Illégal : une discrimination sur l'origine est un délit", "Légal, si le service est complet"], correctAnswer: 1 },
+    { id: 218, categoryId: 'principes', level: 'sit', type: 'situation', question: "Lors d'un repas d'intégration au travail, votre manager vous demande votre religion. Que dites-vous ?", options: ["Vous répondez obligatoirement", "Vous pouvez refuser car c'est une information privée, non obligatoire à divulguer", "Vous devez mentir pour éviter des problèmes"], correctAnswer: 1 },
+    { id: 219, categoryId: 'droits', level: 'sit', type: 'situation', question: "Un commerçant vous propose de payer en liquide pour éviter la TVA. Vous acceptez. Vous êtes :", options: ["Dans votre bon droit, vous économisez de l'argent", "Complice d'une fraude fiscale (travail non déclaré)", "Protégé car c'est le commerçant qui est responsable"], correctAnswer: 1 },
+    { id: 220, categoryId: 'societe', level: 'sit', type: 'situation', question: "Vous souhaitez vous inscrire sur les listes électorales pour la première fois. Que faites-vous ?", options: ["Rien, l'inscription est automatique à 18 ans si vous êtes Français", "Vous inscrivez en mairie ou sur service-public.fr avant le 31 décembre", "Vous vous inscrivez le jour de l'élection"], correctAnswer: 0 },
 ]
 
 export function getQuestionsByCategory(categoryId, examTypeId = null) {
@@ -339,14 +361,47 @@ export function getQuestionsByCategory(categoryId, examTypeId = null) {
     return pool
 }
 
+/**
+ * Builds an official 40-question exam:
+ * - 32 questions from the main pool (CSP, CR or NAT depending on level)
+ * - 8 situational questions (SIT) always included
+ * Falls back to a simple random shuffle for category-based quizzes.
+ */
 export function getRandomQuestions(count = 40, categoryId = null, examTypeId = null) {
-    let pool = categoryId ? getQuestionsByCategory(categoryId, examTypeId) : [...questions]
-    if (!categoryId && examTypeId) {
-        const examType = getExamTypeById(examTypeId)
-        if (examType) pool = pool.filter(q => examType.levels.includes(q.level))
+    // Category mode: simple shuffle, no SIT logic
+    if (categoryId) {
+        const pool = getQuestionsByCategory(categoryId, examTypeId)
+        return shuffle(pool).slice(0, Math.min(count, pool.length))
     }
-    const shuffled = pool.sort(() => Math.random() - 0.5)
-    return shuffled.slice(0, Math.min(count, shuffled.length))
+
+    // Exam mode with official 32 + 8 SIT logic
+    if (examTypeId) {
+        const examType = getExamTypeById(examTypeId)
+        if (examType) {
+            // Main pool: questions matching the exam levels (excluding SIT)
+            const mainPool = questions.filter(q => examType.levels.includes(q.level) && q.level !== 'sit')
+            const sitPool = questions.filter(q => q.level === 'sit')
+
+            const mainSelected = shuffle(mainPool).slice(0, 32)
+            const sitSelected = shuffle(sitPool).slice(0, Math.min(8, sitPool.length))
+
+            return shuffle([...mainSelected, ...sitSelected])
+        }
+    }
+
+    // Fallback: purely random
+    return shuffle([...questions]).slice(0, count)
+}
+
+/**
+ * Build a quiz from a specific set of question IDs (used for weak-points mode).
+ */
+export function getQuestionsByIds(ids) {
+    return questions.filter(q => ids.includes(q.id))
+}
+
+function shuffle(arr) {
+    return [...arr].sort(() => Math.random() - 0.5)
 }
 
 export function getCategoryById(categoryId) {
@@ -360,5 +415,6 @@ export function getExamTypeById(examTypeId) {
 export function getQuestionCountForExamType(examTypeId) {
     const examType = getExamTypeById(examTypeId)
     if (!examType) return questions.length
-    return questions.filter(q => examType.levels.includes(q.level)).length
+    // Count only main pool questions (not SIT — always added separately)
+    return questions.filter(q => examType.levels.includes(q.level) && q.level !== 'sit').length
 }

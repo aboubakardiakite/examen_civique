@@ -1,0 +1,56 @@
+{
+    "name": "Examen Civique — Révisions QCM",
+    "short_name": "Examen Civique",
+    "description": "Préparez votre examen civique français : QCM, points faibles, glossaire et simulateur d'entretien de naturalisation.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#1B2A4A",
+    "theme_color": "#1B2A4A",
+    "lang": "fr",
+    "orientation": "portrait-primary",
+    "categories": [
+        "education",
+        "productivity"
+    ],
+    "icons": [
+        {
+            "src": "/icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "screenshots": [],
+    "shortcuts": [
+        {
+            "name": "Commencer un examen",
+            "short_name": "Examen",
+            "description": "Lancer un QCM",
+            "url": "/exam",
+            "icons": [
+                {
+                    "src": "/icons/icon-192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "Glossaire civique",
+            "short_name": "Glossaire",
+            "description": "Consulter le glossaire",
+            "url": "/glossaire",
+            "icons": [
+                {
+                    "src": "/icons/icon-192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        }
+    ]
+}

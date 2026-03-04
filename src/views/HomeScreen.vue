@@ -178,36 +178,71 @@
 
     <!-- Quick Actions -->
     <section class="max-w-5xl mx-auto px-4 mt-12 mb-8">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <router-link to="/categories" class="glass-card rounded-2xl p-6 flex items-center gap-4 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group">
-          <div class="w-12 h-12 rounded-xl bg-republic-blue-100 flex items-center justify-center group-hover:bg-republic-blue-200 transition-colors">
-            <svg class="w-6 h-6 text-republic-blue-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <h2 class="text-xl font-bold text-republic-blue-800 mb-4">Accès rapide</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+
+        <!-- Réviser par thème -->
+        <router-link to="/categories" class="glass-card rounded-2xl p-4 flex flex-col items-center gap-2 text-center hover:shadow-xl hover:scale-[1.03] transition-all duration-300 group">
+          <div class="w-10 h-10 rounded-xl bg-republic-blue-100 flex items-center justify-center group-hover:bg-republic-blue-200 transition-colors">
+            <svg class="w-5 h-5 text-republic-blue-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
             </svg>
           </div>
-          <div>
-            <h3 class="font-bold text-republic-blue-800">Réviser par catégorie</h3>
-            <p class="text-sm text-gray-500">Choisissez un thème spécifique</p>
-          </div>
-          <svg class="w-5 h-5 text-gray-400 ml-auto group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
-          </svg>
+          <span class="text-xs font-bold text-republic-blue-800 leading-tight">Catégories</span>
         </router-link>
 
-        <router-link to="/dashboard" class="glass-card rounded-2xl p-6 flex items-center gap-4 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group">
-          <div class="w-12 h-12 rounded-xl bg-republic-gold-100 flex items-center justify-center group-hover:bg-republic-gold-200 transition-colors">
-            <svg class="w-6 h-6 text-republic-gold-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+        <!-- Entraînement Intensif (affiché uniquement si points faibles) -->
+        <router-link
+          v-if="weakQuestionIds.length > 0"
+          to="/revision?quick=true"
+          class="glass-card rounded-2xl p-4 flex flex-col items-center gap-2 text-center hover:shadow-xl hover:scale-[1.03] transition-all duration-300 group relative col-span-1"
+        >
+          <div class="absolute -top-1.5 -right-1.5">
+            <span class="text-xs font-extrabold bg-republic-red-500 text-white rounded-full px-1.5 py-0.5 shadow-md">{{ Math.min(weakQuestionIds.length, 10) }}</span>
+          </div>
+          <div class="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center group-hover:bg-orange-200 transition-colors">
+            <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/>
             </svg>
           </div>
-          <div>
-            <h3 class="font-bold text-republic-blue-800">Tableau de bord</h3>
-            <p class="text-sm text-gray-500">Suivez votre progression</p>
-          </div>
-          <svg class="w-5 h-5 text-gray-400 ml-auto group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
-          </svg>
+          <span class="text-xs font-bold text-orange-700 leading-tight">Intensif<br>🔥 10q</span>
         </router-link>
+
+        <!-- Points faibles -->
+        <router-link to="/revision" class="glass-card rounded-2xl p-4 flex flex-col items-center gap-2 text-center hover:shadow-xl hover:scale-[1.03] transition-all duration-300 group relative">
+          <div class="w-10 h-10 rounded-xl bg-republic-red-100 flex items-center justify-center group-hover:bg-republic-red-200 transition-colors">
+            <svg class="w-5 h-5 text-republic-red-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <span class="text-xs font-bold text-republic-red-700 leading-tight">Points<br>faibles
+            <span v-if="weakQuestionIds.length > 0" class="ml-0.5 text-[10px] font-extrabold bg-republic-red-500 text-white rounded-full px-1">
+              {{ weakQuestionIds.length }}
+            </span>
+          </span>
+        </router-link>
+
+        <!-- Glossaire -->
+        <router-link to="/glossaire" class="glass-card rounded-2xl p-4 flex flex-col items-center gap-2 text-center hover:shadow-xl hover:scale-[1.03] transition-all duration-300 group">
+          <div class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center group-hover:bg-green-200 transition-colors">
+            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253z"/>
+            </svg>
+          </div>
+          <span class="text-xs font-bold text-green-700 leading-tight">Glossaire<br><span class="font-normal text-gray-400">34 termes</span></span>
+        </router-link>
+
+        <!-- Entretien -->
+        <router-link to="/entretien" class="glass-card rounded-2xl p-4 flex flex-col items-center gap-2 text-center hover:shadow-xl hover:scale-[1.03] transition-all duration-300 group">
+          <div class="w-10 h-10 rounded-xl bg-republic-gold-100 flex items-center justify-center group-hover:bg-republic-gold-200 transition-colors">
+            <svg class="w-5 h-5 text-republic-gold-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+            </svg>
+          </div>
+          <span class="text-xs font-bold text-republic-gold-700 leading-tight">Entretien<br><span class="font-normal text-gray-400">oral</span></span>
+        </router-link>
+
       </div>
     </section>
   </div>
@@ -219,7 +254,7 @@ import { questions, examTypes, getQuestionCountForExamType } from '../data/quest
 import { useStats } from '../composables/useStats.js'
 import CategoryIcon from '../components/CategoryIcon.vue'
 
-const { totalTests, averageScore, bestScore, getHighScoreForExam, getCategoryStats } = useStats()
+const { totalTests, averageScore, bestScore, getHighScoreForExam, getCategoryStats, weakQuestionIds } = useStats()
 
 const selectedExamType = ref('csp')
 
