@@ -115,12 +115,12 @@ export const questions = [
     { id: 31, categoryId: 'principes', level: 'csp', type: 'connaissance', question: "Un enfant peut-il refuser l'école pour motif religieux ?", options: ["Oui", "Non, l'école est obligatoire", "Seulement le vendredi"], correctAnswer: 1 },
 
     // Système politique
-    { id: 32, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Qui nomme le Premier ministre ?", options: ["Le peuple", "Le Président", "Le Sénat"], correctAnswer: 1 },
-    { id: 33, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Le Parlement est composé :", options: ["Des ministres", "De l'Assemblée et du Sénat", "Des maires"], correctAnswer: 1 },
-    { id: 34, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Qu'est-ce que le pouvoir exécutif ?", options: ["Voter les lois", "Appliquer les lois", "Rendre la justice"], correctAnswer: 1 },
-    { id: 35, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "A-t-on le droit de ne pas respecter une loi ?", options: ["Oui si on l'aime pas", "Non, nul n'est censé l'ignorer", "Oui si on est riche"], correctAnswer: 1 },
-    { id: 36, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Qui doit respecter la loi ?", options: ["Seulement les citoyens", "Tout le monde", "Seulement les élus"], correctAnswer: 1 },
-    { id: 37, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Quel pouvoir détient un juge ?", options: ["Législatif", "Judiciaire", "Exécutif"], correctAnswer: 1 },
+    { id: 32, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Qui nomme le Premier ministre ?", options: ["Le peuple", "Le Président", "Le Sénat"], correctAnswer: 1, courseId: 'institutions#president' },
+    { id: 33, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Le Parlement est composé :", options: ["Des ministres", "De l'Assemblée et du Sénat", "Des maires"], correctAnswer: 1, courseId: 'institutions#parlement' },
+    { id: 34, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Qu'est-ce que le pouvoir exécutif ?", options: ["Voter les lois", "Appliquer les lois", "Rendre la justice"], correctAnswer: 1, courseId: 'institutions#separation-pouvoirs' },
+    { id: 35, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "A-t-on le droit de ne pas respecter une loi ?", options: ["Oui si on l'aime pas", "Non, nul n'est censé l'ignorer", "Oui si on est riche"], correctAnswer: 1, courseId: 'droits#droits-citoyen' },
+    { id: 36, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Qui doit respecter la loi ?", options: ["Seulement les citoyens", "Tout le monde", "Seulement les élus"], correctAnswer: 1, courseId: 'droits#droits-citoyen' },
+    { id: 37, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Quel pouvoir détient un juge ?", options: ["Législatif", "Judiciaire", "Exécutif"], correctAnswer: 1, courseId: 'institutions#separation-pouvoirs' },
     { id: 38, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Qui est élu lors des législatives ?", options: ["Le Président", "Les députés", "Le Maire"], correctAnswer: 1 },
     { id: 39, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Combien de députés à l'Assemblée nationale ?", options: ["300", "577", "600"], correctAnswer: 1 },
     { id: 40, categoryId: 'politique', level: 'csp', type: 'connaissance', question: "Qui est élu lors des municipales ?", options: ["Le Président", "Le conseil municipal/Maire", "Le Député"], correctAnswer: 1 },
@@ -152,15 +152,15 @@ export const questions = [
     { id: 64, categoryId: 'droits', level: 'csp', type: 'connaissance', question: "Quelle est l'infraction la plus grave ?", options: ["La contravention", "Le délit", "Le crime"], correctAnswer: 2 },
 
     // Histoire et Géo
-    { id: 65, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "En quelle année a débuté la Révolution française ?", options: ["1789", "1804", "1914"], correctAnswer: 0 },
+    { id: 65, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "En quelle année a débuté la Révolution française ?", options: ["1789", "1804", "1914"], correctAnswer: 0, courseId: 'histoire#revolution' },
     { id: 66, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Qui était Napoléon Ier ?", options: ["Un peintre", "L'Empereur des Français", "Un roi de France"], correctAnswer: 1 },
-    { id: 67, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Dans quelle République est-on aujourd'hui ?", options: ["La IIIe", "La IVe", "La Ve"], correctAnswer: 2 },
-    { id: 68, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Qui a rendu l'école gratuite et laïque ?", options: ["Victor Hugo", "Jules Ferry", "Napoléon"], correctAnswer: 1 },
-    { id: 69, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Quand a eu lieu la 1ère Guerre mondiale ?", options: ["1914-1918", "1939-1945", "1911-1913"], correctAnswer: 0 },
+    { id: 67, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Dans quelle République est-on aujourd'hui ?", options: ["La IIIe", "La IVe", "La Ve"], correctAnswer: 2, courseId: 'histoire#revolution' },
+    { id: 68, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Qui a rendu l'école gratuite et laïque ?", options: ["Victor Hugo", "Jules Ferry", "Napoléon"], correctAnswer: 1, courseId: 'vie#ecole' },
+    { id: 69, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Quand a eu lieu la 1ère Guerre mondiale ?", options: ["1914-1918", "1939-1945", "1911-1913"], correctAnswer: 0, courseId: 'histoire#guerres' },
     { id: 70, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Date de l'abolition définitive de l'esclavage ?", options: ["1789", "1848", "1905"], correctAnswer: 1 },
-    { id: 71, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Qui a fondé la Ve République ?", options: ["François Mitterrand", "Charles de Gaulle", "Jean Jaurès"], correctAnswer: 1 },
-    { id: 72, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Quelle est la capitale de la France ?", options: ["Marseille", "Lyon", "Paris"], correctAnswer: 2 },
-    { id: 73, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Combien de régions en France métropolitaine ?", options: ["10", "13", "22"], correctAnswer: 1 },
+    { id: 71, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Qui a fondé la Ve République ?", options: ["François Mitterrand", "Charles de Gaulle", "Jean Jaurès"], correctAnswer: 1, courseId: 'histoire#guerres' },
+    { id: 72, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Quelle est la capitale de la France ?", options: ["Marseille", "Lyon", "Paris"], correctAnswer: 2, courseId: 'histoire#geographie' },
+    { id: 73, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Combien de régions en France métropolitaine ?", options: ["10", "13", "22"], correctAnswer: 1, courseId: 'histoire#geographie' },
     { id: 74, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Qui était Molière ?", options: ["Un roi", "Un auteur de théâtre", "Un général"], correctAnswer: 1 },
     { id: 75, categoryId: 'histoire', level: 'csp', type: 'connaissance', question: "Qui était Joséphine Baker ?", options: ["Une chanteuse et résistante", "Une reine", "Une espionne ennemie"], correctAnswer: 0 },
 
@@ -352,8 +352,83 @@ export const questions = [
     { id: 220, categoryId: 'societe', level: 'sit', type: 'situation', question: "Vous souhaitez vous inscrire sur les listes électorales pour la première fois. Que faites-vous ?", options: ["Rien, l'inscription est automatique à 18 ans si vous êtes Français", "Vous inscrivez en mairie ou sur service-public.fr avant le 31 décembre", "Vous vous inscrivez le jour de l'élection"], correctAnswer: 0 },
 ]
 
-export function getQuestionsByCategory(categoryId, examTypeId = null) {
-    let pool = questions.filter(q => q.categoryId === categoryId)
+/**
+ * Fisher-Yates in-place shuffle (RFC gold standard).
+ * Replaces the less uniform .sort(() => Math.random() - 0.5).
+ */
+export function shuffle(arr) {
+    const a = [...arr]
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]]
+    }
+    return a
+}
+
+/**
+ * Pick `n` items from `pool` prioritising IDs NOT in `viewedIds`.
+ * If unseen items are not enough to fill `n`, complete with seen items.
+ * Returns exactly Math.min(n, pool.length) items.
+ */
+function pickWithPriority(pool, n, viewedIds = []) {
+    const viewedSet = new Set(viewedIds)
+    const unseen = pool.filter(q => !viewedSet.has(q.id))
+    const seen = pool.filter(q => viewedSet.has(q.id))
+
+    const shuffledUnseen = shuffle(unseen)
+    const shuffledSeen = shuffle(seen)
+
+    const picked = [
+        ...shuffledUnseen.slice(0, n),
+        ...shuffledSeen.slice(0, Math.max(0, n - shuffledUnseen.length))
+    ]
+    return picked.slice(0, n)
+}
+
+/**
+ * Build an exam set with anti-doublon logic.
+ *
+ * Exam mode (examTypeId provided, no categoryId):
+ *   32 priority-picked from main pool + 8 priority-picked from SIT pool.
+ *
+ * Category mode: simple priority-pick from category pool.
+ *
+ * Fallback: priority-pick from all questions.
+ *
+ * @param {number}   count          - number of questions requested
+ * @param {string|null} categoryId  - optional category filter
+ * @param {string|null} examTypeId  - optional exam type filter
+ * @param {number[]} questionsVues  - IDs already seen (from localStorage)
+ * @returns {Object[]}             - array of question objects
+ */
+export function getRandomQuestions(count = 40, categoryId = null, examTypeId = null, questionsVues = []) {
+    // Category mode
+    if (categoryId) {
+        const pool = getQuestionsByCategory(categoryId, examTypeId)
+        return shuffle(pickWithPriority(pool, Math.min(count, pool.length), questionsVues))
+    }
+
+    // Exam mode: official 32 + 8 SIT structure
+    if (examTypeId) {
+        const examType = getExamTypeById(examTypeId)
+        if (examType) {
+            const mainPool = questions.filter(q => examType.levels.includes(q.level) && q.level !== 'sit')
+            const sitPool = questions.filter(q => q.level === 'sit')
+
+            const mainSelected = pickWithPriority(mainPool, 32, questionsVues)
+            const sitSelected = pickWithPriority(sitPool, Math.min(8, sitPool.length), questionsVues)
+
+            return shuffle([...mainSelected, ...sitSelected])
+        }
+    }
+
+    // Fallback: all questions
+    const pool = [...questions]
+    return shuffle(pickWithPriority(pool, Math.min(count, pool.length), questionsVues))
+}
+
+export function getQuestionsByCategory(catId, examTypeId = null) {
+    let pool = questions.filter(q => q.categoryId === catId)
     if (examTypeId) {
         const examType = getExamTypeById(examTypeId)
         if (examType) pool = pool.filter(q => examType.levels.includes(q.level))
@@ -362,46 +437,12 @@ export function getQuestionsByCategory(categoryId, examTypeId = null) {
 }
 
 /**
- * Builds an official 40-question exam:
- * - 32 questions from the main pool (CSP, CR or NAT depending on level)
- * - 8 situational questions (SIT) always included
- * Falls back to a simple random shuffle for category-based quizzes.
- */
-export function getRandomQuestions(count = 40, categoryId = null, examTypeId = null) {
-    // Category mode: simple shuffle, no SIT logic
-    if (categoryId) {
-        const pool = getQuestionsByCategory(categoryId, examTypeId)
-        return shuffle(pool).slice(0, Math.min(count, pool.length))
-    }
-
-    // Exam mode with official 32 + 8 SIT logic
-    if (examTypeId) {
-        const examType = getExamTypeById(examTypeId)
-        if (examType) {
-            // Main pool: questions matching the exam levels (excluding SIT)
-            const mainPool = questions.filter(q => examType.levels.includes(q.level) && q.level !== 'sit')
-            const sitPool = questions.filter(q => q.level === 'sit')
-
-            const mainSelected = shuffle(mainPool).slice(0, 32)
-            const sitSelected = shuffle(sitPool).slice(0, Math.min(8, sitPool.length))
-
-            return shuffle([...mainSelected, ...sitSelected])
-        }
-    }
-
-    // Fallback: purely random
-    return shuffle([...questions]).slice(0, count)
-}
-
-/**
  * Build a quiz from a specific set of question IDs (used for weak-points mode).
  */
 export function getQuestionsByIds(ids) {
-    return questions.filter(q => ids.includes(q.id))
-}
-
-function shuffle(arr) {
-    return [...arr].sort(() => Math.random() - 0.5)
+    if (!ids || ids.length === 0) return []
+    const idSet = new Set(ids)
+    return questions.filter(q => idSet.has(q.id))
 }
 
 export function getCategoryById(categoryId) {

@@ -6,6 +6,8 @@ import CategoryView from '../views/CategoryView.vue'
 import GlossaireView from '../views/GlossaireView.vue'
 import WeakPointsView from '../views/WeakPointsView.vue'
 import EntretienView from '../views/EntretienView.vue'
+import CourseListView from '../views/CourseListView.vue'
+import CourseChapterView from '../views/CourseChapterView.vue'
 
 const routes = [
     {
@@ -47,6 +49,16 @@ const routes = [
         path: '/entretien',
         name: 'entretien',
         component: EntretienView
+    },
+    {
+        path: '/cours',
+        name: 'CourseList',
+        component: CourseListView
+    },
+    {
+        path: '/cours/:themeId',
+        name: 'CourseChapter',
+        component: CourseChapterView
     }
 ]
 

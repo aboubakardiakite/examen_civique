@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-5xl mx-auto px-4 py-8">
     <!-- Header -->
-    <div class="flex items-center justify-between mb-8">
+    <div class="flex items-center justify-between mb-6">
       <div>
         <h1 class="text-3xl font-bold text-republic-blue-800">Tableau de bord</h1>
         <p class="text-gray-500 mt-1">Suivez votre progression au fil du temps</p>
@@ -13,6 +13,54 @@
       >
         Effacer l'historique
       </button>
+    </div>
+
+    <!-- Couverture de la base de données -->
+    <div class="glass-card rounded-2xl p-5 mb-8">
+      <div class="flex items-center justify-between mb-3">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-republic-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+          </svg>
+          <h2 class="font-bold text-republic-blue-800">Couverture de la base de données</h2>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-sm font-bold text-republic-blue-700">
+            {{ seenCount }} / {{ totalQuestionsCount }} questions vues
+          </span>
+          <span
+            class="text-xs font-extrabold px-2.5 py-1 rounded-full"
+            :class="coveragePercentage >= 100 ? 'bg-green-100 text-green-700' : coveragePercentage >= 50 ? 'bg-republic-gold-100 text-republic-gold-700' : 'bg-republic-blue-100 text-republic-blue-700'"
+          >
+            {{ coveragePercentage }}%
+          </span>
+        </div>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="w-full h-3 bg-gray-100 rounded-full overflow-hidden mb-3">
+        <div
+          class="h-full rounded-full transition-all duration-700 ease-out"
+          :class="coveragePercentage >= 100 ? 'bg-gradient-to-r from-green-400 to-emerald-500' : 'bg-gradient-to-r from-republic-blue-500 to-republic-blue-700'"
+          :style="{ width: Math.min(coveragePercentage, 100) + '%' }"
+        ></div>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <p class="text-xs text-gray-400">
+          <span v-if="coveragePercentage >= 100" class="text-green-600 font-bold">✅ Toute la base a été parcourue ! Nouveau cycle lancé.</span>
+          <span v-else>Les questions non encore vues sont prioritaires lors des prochains examens.</span>
+        </p>
+        <button
+          @click="handleResetProgression"
+          class="text-xs text-gray-400 hover:text-republic-red-600 font-medium px-3 py-1.5 rounded-lg hover:bg-republic-red-50 transition-colors flex items-center gap-1.5"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+          </svg>
+          Réinitialiser ma progression
+        </button>
+      </div>
     </div>
 
     <!-- Empty state -->
@@ -242,14 +290,22 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useStats } from '../composables/useStats.js'
+import { useQuestionsVues } from '../composables/useQuestionsVues.js'
 import { getCategoryById, examTypes } from '../data/questions.js'
 import CategoryIcon from '../components/CategoryIcon.vue'
 
 const { testHistory, totalTests, getScoreEvolution, clearHistory } = useStats()
+const { seenCount, totalQuestions: totalQuestionsCount, coveragePercentage, resetQuestionsVues } = useQuestionsVues()
 
 const showClearModal = ref(false)
 const selectedChartFilter = ref(null)
 const chartWidth = 600
+
+function handleResetProgression() {
+  if (confirm('Réinitialiser votre progression ? Les questions seront à nouveau toutes disponibles.')) {
+    resetQuestionsVues()
+  }
+}
 
 const filteredHistory = computed(() => {
   if (!selectedChartFilter.value) return testHistory.value

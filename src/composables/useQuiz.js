@@ -1,6 +1,7 @@
 import { ref, computed } from 'vue'
-import { getRandomQuestions, getCategoryById, getExamTypeById, getQuestionsByIds, categories } from '../data/questions.js'
+import { getRandomQuestions, getCategoryById, getExamTypeById, getQuestionsByIds, questions } from '../data/questions.js'
 import { useLocalStorage } from './useLocalStorage.js'
+import { useQuestionsVues } from './useQuestionsVues.js'
 
 export function useQuiz(examTypeId = null, categoryId = null, preselectedQuestionIds = null) {
     const quizQuestions = ref([])
@@ -10,46 +11,48 @@ export function useQuiz(examTypeId = null, categoryId = null, preselectedQuestio
     const selectedAnswer = ref(null)
     const isFinished = ref(false)
     const isWeakPointsMode = ref(!!preselectedQuestionIds)
-    const timeRemaining = ref(45 * 60) // 45 minutes by default
+    const timeRemaining = ref(45 * 60)
     const timeSpent = ref(0)
     let timerInterval = null
     const testHistory = useLocalStorage('exam-civique-history', [])
+
+    // Anti-doublon tracking
+    const { questionsVues, unseenCount, markAsSeen, resetQuestionsVues } = useQuestionsVues()
 
     const examType = computed(() => examTypeId ? getExamTypeById(examTypeId) : null)
     const questionCount = computed(() => examType.value?.questionCount || 40)
     const passThreshold = computed(() => examType.value?.passThreshold || 32)
 
-    const currentQuestion = computed(() => {
-        return quizQuestions.value[currentIndex.value] || null
-    })
+    const currentQuestion = computed(() => quizQuestions.value[currentIndex.value] || null)
 
     const progress = computed(() => {
         if (quizQuestions.value.length === 0) return 0
-        return ((currentIndex.value) / quizQuestions.value.length) * 100
+        return (currentIndex.value / quizQuestions.value.length) * 100
     })
 
-    const score = computed(() => {
-        return answers.value.filter(a => a.correct).length
-    })
-
+    const score = computed(() => answers.value.filter(a => a.correct).length)
     const totalQuestions = computed(() => quizQuestions.value.length)
-
     const hasPassed = computed(() => score.value >= passThreshold.value)
-
     const percentage = computed(() => {
         if (totalQuestions.value === 0) return 0
         return Math.round((score.value / totalQuestions.value) * 100)
     })
 
     function startQuiz() {
-        // Weak-points mode: use pre-selected questions
+        // Weak-points mode: use pre-selected questions (no anti-doublon)
         if (preselectedQuestionIds && preselectedQuestionIds.length > 0) {
             quizQuestions.value = getQuestionsByIds(preselectedQuestionIds)
                 .sort(() => Math.random() - 0.5)
         } else {
+            // Auto-reset seen list when unseen pool is too small (< 40 questions left)
+            if (unseenCount.value < 40) {
+                resetQuestionsVues()
+            }
+
             const count = categoryId ? 999 : (examTypeId ? 40 : 40)
-            quizQuestions.value = getRandomQuestions(count, categoryId, examTypeId)
+            quizQuestions.value = getRandomQuestions(count, categoryId, examTypeId, questionsVues.value)
         }
+
         currentIndex.value = 0
         answers.value = []
         showFeedback.value = false
@@ -71,7 +74,6 @@ export function useQuiz(examTypeId = null, categoryId = null, preselectedQuestio
 
     function submitAnswer(optionIndex) {
         if (showFeedback.value) return
-
         selectedAnswer.value = optionIndex
         const isCorrect = optionIndex === currentQuestion.value.correctAnswer
         answers.value.push({
@@ -98,6 +100,10 @@ export function useQuiz(examTypeId = null, categoryId = null, preselectedQuestio
         timeSpent.value = (45 * 60) - timeRemaining.value
         isFinished.value = true
 
+        // Mark all questions from this test as seen
+        const seenIds = quizQuestions.value.map(q => q.id)
+        markAsSeen(seenIds)
+
         // Determine dominant category
         const categoryCounts = {}
         answers.value.forEach(a => {
@@ -121,7 +127,7 @@ export function useQuiz(examTypeId = null, categoryId = null, preselectedQuestio
             answers: answers.value
         }
 
-        testHistory.value = [result, ...testHistory.value].slice(0, 50) // Keep last 50 tests
+        testHistory.value = [result, ...testHistory.value].slice(0, 50)
     }
 
     return {
@@ -139,11 +145,11 @@ export function useQuiz(examTypeId = null, categoryId = null, preselectedQuestio
         hasPassed,
         percentage,
         passThreshold,
-        examType,
         timeRemaining,
         timeSpent,
         startQuiz,
         submitAnswer,
-        nextQuestion
+        nextQuestion,
+        finishQuiz
     }
 }
